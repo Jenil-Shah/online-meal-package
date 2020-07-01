@@ -1,75 +1,130 @@
-<div class="foodHero">
+<!--Food Hero Section-->
+<div id="slides" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#slides" data-slide-to="0" class="active"></li>
+        <li data-target="#slides" data-slide-to="1"></li>
+        <li data-target="#slides" data-slide-to="2"></li>
+    </ul>
 
-    <div class="quotes-1">
-        Your Cuisine, Your Home. <br>
-        Get instantly delivered.
-    </div>
-</div>
+    <div class="set-image">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/img/background1.jpg" alt="">
 
-<div class="quotes-1-nav">
-        Order variety of cuisines, juices, coffee and deserts.
-        <b>Order Now</b>
-</div>
-
-<div class="selling-features">
-        <h2>Eat what's best for your belly!</h2>
-        <div class="selling-features-desc">
-
-            <div class="selling-features-desc-elements">
-                <img src="/img/select.jpg" alt="">
-                <br>
-                <h2>SELECT</h2>
-                
-                100+ variety of cuisines
-            </div>
-
-            <div class="selling-features-desc-elements">
-                <img src="/img/delivery.jpg" alt="">
-                <br>
-                <h2>DELIVERY</h2>
-                
-                Fastest delivery at your place
-            </div>
-
-            <div class="selling-features-desc-elements">
-                <img src="/img/eat.jpg" alt="">
-                <br>
-                <h2>EAT</h2>
-                
-                Healthy and Delightful Recipes
-            </div>
-
-            <div class="selling-features-desc-elements">
-                <img src="/img/repeat.jpg" alt="">
-                <br>
-                <h2>REPEAT</h2>
-                
-                Keep ordering, Save Time
-            </div>
-        </div>
-    </div>
-
-    <br>
-
-    <div class="topmeal-description">
-
-        <h2> Top Cuisines of the Month</h2>
-        <br>
-        <b><i>You could be chowing down on any of these meals any time you choose - seriously!
-        <br>
-    Order some (or all) of these meals and see why thousands of Canadians stock us in their fridge!</i></b>
-
-        <div class="topmeal-container">
-            {{#each data}}
-
-                <div class="topmeal-item">
-                    <img src="/img/{{this.imgName}}" alt="">
-                    <br><br>
-                    <b>{{this.title}}
-                    <br><br>
-                    <i>$ {{this.price}}</i></b>
+                <div class="carousel-caption">
+                    <h1 class="display-2">Your Cuisine, Your Home. </h1>
+                    <h3>Get instantly delivered</h3>
+                    <button type="button" class="btn btn-outline-light btn-lg">Meals Package</button>
+                    <button type="button" class="btn btn-primary btn-lg">Sign Up</button>
                 </div>
+            </div>
 
-            {{/each}}
+            <div class="carousel-item">
+                <img src="/img/foodHero.jpg" alt="">
+            </div>
+
+            <div class="carousel-item">
+                <img src="/img/background2.jpg" alt="">
+            </div>
         </div>
     </div>
+</div>
+
+<!--Jumbotron-->
+<div class="container-fluid">
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+            <p class="lead">Order variety of cuisines, juices, coffee and deserts.</p>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+            <a href="/"><button type="button" class="btn btn-outline-secondary btn-lg">Order Now</button></a>
+        </div>
+    </div>
+</div>
+
+<!--Welcome Section-->
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="display-4">Eat what's best for your belly!</h1>
+        </div>
+
+        <hr>
+
+        <div class="col-12">
+            <p class="lead">Welcome to Master Chef J.</p>
+        </div>
+    </div>
+</div>
+
+<!--Service Information-->
+<div class="container-fluid padding">
+
+    <div class="row text-center padding">
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <img src="/img/select.jpg" alt="">
+            <br>
+            <h2>SELECT</h2>
+                    
+            100+ variety of cuisines
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <img src="/img/delivery.jpg" alt="">
+            <br>
+            <h2>DELIVERY</h2>
+                    
+            Fastest delivery at your place
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <img src="/img/eat.jpg" alt="">
+            <br>
+            <h2>EAT</h2>
+                    
+            Healthy and Delightful Recipes
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <img src="/img/repeat.jpg" alt="">
+            <br>
+            <h2>REPEAT</h2>
+                    
+            Keep ordering, Save Time
+        </div>
+    </div>
+    <hr class="my-4">
+</div>
+
+<!--Top Cuisine Information-->
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="display-4">Top Cuisines of the Month</h1>
+        </div>
+
+        <hr>
+
+        <div class="col-12">
+            <p class="lead"><i>You could be chowing down on any of these meals any time you choose - seriously!
+            <br>
+            Order some (or all) of these meals and see why thousands of Canadians stock us in their fridge!</i></p>
+        </div>
+    </div>
+</div>
+
+<!--Top Cuisine Display-->
+<div class="container-fluid padding">
+    <div class="row text-center padding">
+        {{#each data}}
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <img src="/img/{{this.imgName}}" alt="">
+                <br><br>
+                <p><b>{{this.title}}</b></p>
+                <p><b><i>$ {{this.price}}</i></b></p>
+            </div>
+        {{/each}}   
+    </div>
+</div>
