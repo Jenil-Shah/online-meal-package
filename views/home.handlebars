@@ -1,0 +1,75 @@
+<div class="foodHero">
+
+    <div class="quotes-1">
+        Your Cuisine, Your Home. <br>
+        Get instantly delivered.
+    </div>
+</div>
+
+<div class="quotes-1-nav">
+        Order variety of cuisines, juices, coffee and deserts.
+        <b>Order Now</b>
+</div>
+
+<div class="selling-features">
+        <h2>Eat what's best for your belly!</h2>
+        <div class="selling-features-desc">
+
+            <div class="selling-features-desc-elements">
+                <img src="/img/select.jpg" alt="">
+                <br>
+                <h2>SELECT</h2>
+                
+                100+ variety of cuisines
+            </div>
+
+            <div class="selling-features-desc-elements">
+                <img src="/img/delivery.jpg" alt="">
+                <br>
+                <h2>DELIVERY</h2>
+                
+                Fastest delivery at your place
+            </div>
+
+            <div class="selling-features-desc-elements">
+                <img src="/img/eat.jpg" alt="">
+                <br>
+                <h2>EAT</h2>
+                
+                Healthy and Delightful Recipes
+            </div>
+
+            <div class="selling-features-desc-elements">
+                <img src="/img/repeat.jpg" alt="">
+                <br>
+                <h2>REPEAT</h2>
+                
+                Keep ordering, Save Time
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="topmeal-description">
+
+        <h2> Top Cuisines of the Month</h2>
+        <br>
+        <b><i>You could be chowing down on any of these meals any time you choose - seriously!
+        <br>
+    Order some (or all) of these meals and see why thousands of Canadians stock us in their fridge!</i></b>
+
+        <div class="topmeal-container">
+            {{#each data}}
+
+                <div class="topmeal-item">
+                    <img src="/img/{{this.imgName}}" alt="">
+                    <br><br>
+                    <b>{{this.title}}
+                    <br><br>
+                    <i>$ {{this.price}}</i></b>
+                </div>
+
+            {{/each}}
+        </div>
+    </div>

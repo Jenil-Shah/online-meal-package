@@ -1,0 +1,29 @@
+<div class="foodHero-packages">
+    <div class="quotes-2">
+        Our Meal Packages
+    </div>
+
+    <div class="quotes-3">
+        Enjoy the Variety!!!
+    </div>
+</div>
+
+<div class="package-container">
+        {{#each data}}
+
+            <div class="package-item">
+                <img src="/img/{{this.imgName}}" alt="">
+                <br><br>
+                <b>{{this.title}}
+                <br><br>
+                <i>$ {{this.price}}</i></b>
+                <br>
+                <i>{{this.category}}</i>
+                <br><br>
+                {{this.noOfMeals}} types of Meals
+                <hr>
+                <i>{{this.synopsis}}</i>
+            </div>
+
+        {{/each}}
+    </div>
