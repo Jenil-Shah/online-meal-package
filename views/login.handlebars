@@ -1,46 +1,43 @@
-<div class="box">
-    <form action="" method="post">
-        <fieldset>
-            <legend><b>Create Account</b></legend>
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-lg-4 col-md-3 col-sm-2"></div>
 
-            <br>
+        <div class="col-lg-4 col-md-6 col-sm-8">
+            <form action="" method="post" id="form-ui">
+                <fieldset>
+                    <legend><b>Customer Login</b></legend>
 
-            <div class="social-logo">
-                <img class="form-social" id="fb" src="/img/fbLogo.jpg" alt="">
-                <img class="form-social" src="/img/instaLogo.jpg" alt="">
-                <img class="form-social" src="/img/tweetLogo.jpg" alt="">
-            </div>
+                    <div class="col-12 social-pic">
+                        <img class="social" src="/img/fbLogo.jpg" alt="">
+                        <img class="social" src="/img/instaLogo.jpg" alt="">
+                        <img class="social" src="/img/tweetLogo.jpg" alt="">
+                    </div>
 
-            <br>
+                    <div class="col-12" id="or">
+                        <hr>or<hr>
+                    </div>
 
-            <div id="or">
-                <hr>
-                 or
-                <hr>
-            </div>
+                    <div class="col-12">
+                        <label for="email">Email</label> <br>
+                        <input type="email" name="EmailLog">
+                    </div>
 
-            <br><br>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4"><label for="password">Password</label></div>
+                            <div class="col-8" style="text-align: right;"><a><i>Forgot Password?</i></a> </div>
+                        </div>
+                        <input type="password" name="PasswordLog">
+                    </div>
 
-            <div class="login-fields">
-                <label for="email">Email</label> <br><br>
-                <input type="email" id="emailLog" name="EmailLog">
-            </div>
+                    <div class="col-12">
+                        <b><input type="submit" value="Sign in" id="signIn"></b>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
 
-            <br><br>
+        <div class="col-lg-4 col-md-3 col-sm-2"></div>
+    </div>
 
-            <div class="login-fields">
-                <label for="password">Password</label> <a id="forgot" href=""><i>Forgot your Password?</i></a> <br><br>
-                <input type="password" id="passwordLog" name="PasswordLog">
-            </div>
-
-            <br><br>
-
-            <div class="login-button">
-                <b><input type="submit" value="SIGN IN" id="signIn"></b>
-            </div>
-
-            <br><br>
-
-        </fieldset>
-    </form>
 </div>

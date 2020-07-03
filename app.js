@@ -35,7 +35,7 @@ app.get("/mealsPackage",(req,res) => {
 app.get("/registration",(req,res) => {
     res.render("registration",{
         title:"Sign up",
-        h1_quote:"Ceate Your Account",
+        h1_quote:"Create Your Account",
         h3_quote:"Get chance to win our Gift Card"
     });
 });
@@ -43,7 +43,7 @@ app.get("/registration",(req,res) => {
 app.get("/login",(req,res) => {
     res.render("login",{
         title:"Log In",
-        h1_quote:"Visit our Meal Package Section",
+        h1_quote:"Visit our Meal Packages",
         h3_quote:"Enjoy the Variety!!!"
     });
 });
