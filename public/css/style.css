@@ -3,7 +3,16 @@
 /*--Media Queries--*/
 @media (max-width: 992px)
 {
+    .set-image
+    {
+        padding: 0!important;
+    }
 
+    .set-image img
+    {
+        width: 100%;
+        height: 500px!important;
+    }
 }
 
 @media (max-width: 768px)
@@ -13,7 +22,11 @@
 
 @media (max-width: 576px)
 {
-
+    .set-image img
+    {
+        width: 100%;
+        height: 400px!important;
+    }
 }
 
 
@@ -51,7 +64,7 @@
 
 }*/
 
-/*--Bootstrap Paddinf Fix--*/
+/*--Bootstrap Padding Fix--*/
 [class*="col-"]
 {
     padding: 1rem;
@@ -75,11 +88,18 @@ header
     color: white;
 }
 
-  /*home*/
-  .set-image img
-  {
-      width: 100%;
-  }
+/*home*/
+
+.set-image
+{
+    padding: 0 4%;
+    background-color: powderblue;
+}
+.set-image img
+{
+    width: 100%;
+    height: 600px;
+}
 
 /*Meal Package*/
   
@@ -90,13 +110,14 @@ footer
     background-color:#c70039;
     
 }
-  .social
-  {
-      width: 30px;
-      height: 25px;
-      border-radius: 25%;
-      margin: 0 10px;
-  }
+
+.social
+{
+    width: 30px;
+    height: 25px;
+    border-radius: 25%;
+    margin: 0 10px;
+}
 
 .appLogo
 {
@@ -118,7 +139,6 @@ footer
 #form-ui
 {
     border: 1px solid black;
-    
 }
 
 #or

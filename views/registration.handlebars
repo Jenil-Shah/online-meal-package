@@ -3,7 +3,7 @@
         <div class="col-lg-4 col-md-3"></div>
 
         <div class="col-lg-4 col-md-6">
-            <form action="" method="post" id="form-ui">
+            <form action="/registration" method="POST" id="form-ui">
                 <fieldset>
                     <legend><b>Create Account</b></legend>
 
@@ -18,23 +18,27 @@
                     </div>
 
                     <div class="col-12">
-                        <label for="fname">First Name</label><br>
-                        <input type="text" name="Fname">
+                        <label for="fname">First Name</label>
+                        {{#each errorMessages}}<div>{{this.first}}</div>{{/each}}
+                        <div><input type="text" name="Fname" value={{field.firstName}}></div>
                     </div>
 
                     <div class="col-12">
-                        <label for="lname">Last Name</label> <br>
-                        <input type="text" name="Lname">
+                        <label for="lname">Last Name</label>
+                        {{#each errorMessages}}<div>{{this.last}}</div>{{/each}}
+                        <div><input type="text" name="Lname" value={{field.lastName}}></div>
                     </div>
 
                     <div class="col-12">
-                        <label for="email">Email</label> <br>
-                        <input type="email" name="Email">
+                        <label for="email">Email</label>
+                        {{#each errorMessages}}<div>{{this.email}}</div>{{/each}}
+                        <div><input type="email" name="Email" value={{field.email}}></div>
                     </div>
 
                     <div class="col-12">
-                        <label for="password">Password</label> <br>
-                        <input type="password" name="password">
+                        <label for="password">Password</label>
+                        {{#each errorMessages}}<div>{{this.password}}</div>{{/each}}
+                        <div><input type="password" name="Password" value={{field.password}}></div>
                     </div>
 
                     <div class="col-12">

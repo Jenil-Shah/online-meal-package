@@ -3,7 +3,7 @@
         <div class="col-lg-4 col-md-3 col-sm-2"></div>
 
         <div class="col-lg-4 col-md-6 col-sm-8">
-            <form action="" method="post" id="form-ui">
+            <form action="/login" method="POST" id="form-ui">
                 <fieldset>
                     <legend><b>Customer Login</b></legend>
 
@@ -18,8 +18,9 @@
                     </div>
 
                     <div class="col-12">
-                        <label for="email">Email</label> <br>
-                        <input type="email" name="EmailLog">
+                        <label for="email">Email</label>
+                        {{#each errorMessages}}<div>{{this.email}}</div>{{/each}}
+                        <div><input type="email" name="EmailLog" value={{field.email}}></div>
                     </div>
 
                     <div class="col-12">
@@ -27,7 +28,8 @@
                             <div class="col-4"><label for="password">Password</label></div>
                             <div class="col-8" style="text-align: right;"><a><i>Forgot Password?</i></a> </div>
                         </div>
-                        <input type="password" name="PasswordLog">
+                        {{#each errorMessages}}<div>{{this.password}}</div>{{/each}}
+                        <div><input type="password" name="PasswordLog" value={{field.password}}></div>
                     </div>
 
                     <div class="col-12">
