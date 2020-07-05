@@ -92,8 +92,9 @@ header
 
 .set-image
 {
-    padding: 0 4%;
-    background-color: powderblue;
+    padding: 0 7%;
+    background-image: url("/img/wallpaper2.jpg");
+    background-size: 10% 10%;
 }
 .set-image img
 {

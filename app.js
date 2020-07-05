@@ -115,7 +115,29 @@ app.post("/registration",(req,res) => {
 
     else
     {
-        res.redirect("/dashBoard");
+        const sgMail = require('@sendgrid/mail');
+        sgMail.setApiKey("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");
+        const msg = {
+        to: `jenilshah757@gmail.com`,
+        from: `${values.email}`,
+        subject: 'Welcome to Masterchef J.',
+        html: 
+        `<strong>Hi! <i>${values.firstName} ${values.lastName}</i>,</strong><br>
+        <p>Welcome to <strong>Masterchef J. Community</strong></p>
+        <p>You have been added as a user member and you are welcome to use our services and edit your profile on DashBoard</p>
+        <p><i>Don't Waste your time and order your favourite cuisines and satisfy your hungry belly</i></p>
+        <i>Thank You for joining Masterchef J.</i><br><br>
+        <strong>Best Regards,</strong><br>
+        <strong>Masterchef J.</strong>
+        `,
+        };
+        sgMail.send(msg)
+        .then(()=>{
+            res.redirect("/dashBoard");
+        })
+        .catch(err=>{
+            console.log(`Error: ${err}`);
+        });
     }
 
 });
