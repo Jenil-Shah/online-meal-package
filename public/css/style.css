@@ -12,12 +12,15 @@
     {
         width: 100%;
         height: 500px!important;
-    }
+    } 
 }
 
 @media (max-width: 768px)
 {
-    
+    .display-quote
+    {
+        background-color: transparent!important;
+    } 
 }
 
 @media (max-width: 576px)
@@ -39,30 +42,6 @@
     -webkit-backface-visibility: visible;
     backface-visibility: visible;
 }
-
-/*--Fixed Backgroung Image--*/
-/*figure
-{
-    position: relative;
-    width: 100%;
-    height: 60%;
-    margin: 0!important;
-}
-
-.fixed-wrap
-{
-    clip: rect(0,auto,0,auto);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center center;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-
-}*/
 
 /*--Bootstrap Padding Fix--*/
 [class*="col-"]
@@ -86,6 +65,7 @@ header
 {
     font-weight: bolder;
     color: white;
+    font-size: x-large;
 }
 
 /*home*/
@@ -93,8 +73,8 @@ header
 .set-image
 {
     padding: 0 7%;
-    background-image: url("/img/wallpaper2.jpg");
-    background-size: 10% 10%;
+    background-image: url("/img/wallpaper3.jpg");
+    background-size: 100%;
 }
 .set-image img
 {
@@ -102,14 +82,117 @@ header
     height: 600px;
 }
 
+.jumbotron
+{
+    padding: 1rem;
+    border-radius: 0;
+}
+
+.display-quote
+{
+    color: whitesmoke;
+    background-color: burlywood;
+    border-radius: 50%;
+    font-size: 2.5rem;
+}
+
+.cuisine-display
+{
+    border-radius: 20%;
+}
+
+.service-display
+{
+    border-radius: 20%;
+}
+
+.cuisine-display:hover
+{
+    transform:scale(1.1);
+    cursor:pointer;	
+}
+
+.service-display:hover
+{
+    transform:scale(1.1);
+    cursor:pointer;
+}
+
+.service-display-quote
+{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.jumbotron p
+{
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.jumbotron button
+{
+    border: 2px solid black;
+}
+
+.display-4
+{
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.welcome-master
+{
+    font-size: xx-large;
+    font-style: oblique;
+    font-family: cursive;
+}
+
+.order-quote
+{
+    font-family: serif;
+}
+
+.cuisine-display-information
+{
+    font-family: sans-serif;
+}
+
+.money
+{
+    color: green;
+    font-weight: bold;
+}
+
 /*Meal Package*/
-  
+.topmeal-display
+{
+    border-radius: 20%;
+}
+
+.topmeal-display:hover
+{
+    transform:scale(1.1);
+    cursor:pointer;
+}
+
+.topmeal-display-information
+{
+    font-family: serif;
+    font-size: medium;
+}
 
 /*footer*/
 footer
 {
     background-color:#c70039;
     
+}
+
+footer a, footer p
+{
+    color: black;
+    font-weight: bold;
 }
 
 .social
@@ -126,11 +209,6 @@ footer
     width: 120px;
 }
 
-#subscribe
-{
-    background-color: #87dfd6;
-}
-
 /*box*/
 .social-pic
 {
@@ -140,6 +218,7 @@ footer
 #form-ui
 {
     border: 1px solid black;
+    background-color: darkgray;
 }
 
 #or
@@ -147,4 +226,45 @@ footer
     text-align: center;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*Forms*/
+.field-input
+{
+    width: 80%;
+}
+
+label
+{
+    text-align: center;
+}
+
+.blank-design
+{
+    background-image: url("/img/wallpaper3.jpg");
+    background-size: 100%;
+}
+
+legend,.label-name
+{
+    text-align: center;
+    font-family: cursive;
+}
+
+.error-style
+{
+    color: red;
+    font-size: small;
+}
+
+/*DashBoard*/
+.dashboard-greeting
+{
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: url("/img/wallpaper3.jpg");
+    background-size: 100%;
+    color: bisque;
+    padding: 5% 10%;
 }

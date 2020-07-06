@@ -2,11 +2,11 @@
 <div class="container-fluid">
     <div class="row jumbotron">
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-            <p class="lead">Order variety of cuisines, juices, coffee and deserts.</p>
+            <p class="lead">Order variety of cuisines, juices, coffee and desserts.</p>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-            <a href="/"><button type="button" class="btn btn-outline-secondary btn-lg">Order Now</button></a>
+            <a href="/"><button type="button" class="btn btn-outline-secondary btn-lg"><b>Order Now</b></button></a>
         </div>
     </div>
 </div>
@@ -15,24 +15,24 @@
 <div class="container-fluid padding">
     <div class="row welcome text-center">
         <div class="col-12">
-            <h1 class="display-4">Eat what's best for your belly!</h1>
+            <h1 class="display-4"><i>Eat what's best for your belly!</i></h1>
         </div>
 
         <hr>
 
         <div class="col-12">
-            <p class="lead">Welcome to Master Chef J.</p>
+            <p class="lead welcome-master">Welcome to Master Chef J.</p>
         </div>
     </div>
 </div>
 
 <!--Service Information-->
-<div class="container-fluid padding">
+<div class="container-fluid padding service-display-quote">
 
     <div class="row text-center padding">
 
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <img src="/img/select.jpg" alt="">
+            <img class="service-display" src="/img/select.jpg" alt="">
             <br>
             <h2>SELECT</h2>
                     
@@ -40,7 +40,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <img src="/img/delivery.jpg" alt="">
+            <img class="service-display" src="/img/delivery.jpg" alt="">
             <br>
             <h2>DELIVERY</h2>
                     
@@ -48,7 +48,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <img src="/img/eat.jpg" alt="">
+            <img class="service-display" src="/img/eat.jpg" alt="">
             <br>
             <h2>EAT</h2>
                     
@@ -56,7 +56,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-            <img src="/img/repeat.jpg" alt="">
+            <img class="service-display" src="/img/repeat.jpg" alt="">
             <br>
             <h2>REPEAT</h2>
                     
@@ -76,7 +76,7 @@
         <hr>
 
         <div class="col-12">
-            <p class="lead"><i>You could be chowing down on any of these meals any time you choose - seriously!
+            <p class="lead order-quote"><i>You could be chowing down on any of these meals any time you choose - seriously!
             <br>
             Order some (or all) of these meals and see why thousands of Canadians stock us in their fridge!</i></p>
         </div>
@@ -87,11 +87,11 @@
 <div class="container-fluid padding">
     <div class="row text-center padding">
         {{#each data}}
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <img src="/img/{{this.imgName}}" alt="">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 cuisine-display-information">
+                <img class="cuisine-display" src="/img/{{this.imgName}}" alt="">
                 <br><br>
                 <p><b>{{this.title}}</b></p>
-                <p><b><i>$ {{this.price}}</i></b></p>
+                <span class="money"><p><b><i>$ {{this.price}}</i></b></p></span>
             </div>
         {{/each}}   
     </div>

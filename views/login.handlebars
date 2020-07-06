@@ -1,4 +1,4 @@
-<div class="container-fluid padding">
+<div class="container-fluid padding  blank-design">
     <div class="row padding">
         <div class="col-lg-4 col-md-3 col-sm-2"></div>
 
@@ -17,24 +17,25 @@
                         <hr>or<hr>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 label-name">
                         <label for="email">Email</label>
-                        {{#each errorMessages}}<div>{{this.email}}</div>{{/each}}
-                        <div><input type="email" name="EmailLog" value={{field.email}}></div>
+                        {{#each errorMessages}}<div class="error-style">{{this.email}}</div>{{/each}}
+                        <div><input class="field-input" type="email" placeholder="Enter Email..." name="EmailLog" value={{field.email}}></div>
                     </div>
 
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-4"><label for="password">Password</label></div>
-                            <div class="col-8" style="text-align: right;"><a><i>Forgot Password?</i></a> </div>
+                            <div class="col-4" style="text-align: right; font-family: cursive;"><label for="password">Password</label></div>
+                            <div class="col-8" style="text-align: center;"><a><i>&emsp;&emsp;Forgot Password?</i></a> </div>
                         </div>
-                        {{#each errorMessages}}<div>{{this.password}}</div>{{/each}}
-                        <div><input type="password" name="PasswordLog" value={{field.password}}></div>
+                        {{#each errorMessages}}<div class="error-style">{{this.password}}</div>{{/each}}
+                        <div class="label-name"><input class="field-input" placeholder="Enter Password" type="password" name="PasswordLog" value={{field.password}}></div>
                     </div>
 
-                    <div class="col-12">
-                        <b><input type="submit" value="Sign in" id="signIn"></b>
+                    <div class="col-12 label-name">
+                        <b><input class="field-input btn btn-primary btn-lg" type="submit" value="Sign in" id="signIn"></b>
                     </div>
+                    <br>
                 </fieldset>
             </form>
         </div>

@@ -1,12 +1,13 @@
+<br><br>
 <!--Meal Packages-->
 <div class="container-fluid padding">
-    <div class="row text-center padding">
+    <div class="row text-center padding topmeal-display-information">
         {{#each data}}
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <img src="/img/{{this.imgName}}" alt="">
+                <img class="topmeal-display" src="/img/{{this.imgName}}" alt="">
                 <br><br>
                 <p><b>{{this.title}}</b></p>
-                <p><b><i>$ {{this.price}}</i></b></p>
+                <span class="money"><p><b><i>$ {{this.price}}</i></b></p></span>
                 <p><i>{{this.category}}</i></p>
                 <p>{{this.noOfMeals}} types of Meals</p>
                 <hr>
@@ -15,3 +16,5 @@
         {{/each}}
     </div>
 </div>
+<br>
+<br>

@@ -68,7 +68,7 @@ class topMealDB
             price : 159,
             category : "Indian",
             noOfMeals : 10,
-            synopsis : "Includes variety of Tortillas, Curries and Rice dishes",
+            synopsis : "Includes variety of Tortillas, Curries & Rice dishes",
             topPackage : true
         });
 
@@ -78,7 +78,7 @@ class topMealDB
             price : 142,
             category : "Chinese",
             noOfMeals : 12,
-            synopsis : "Includes variety of Noodles, Sea Food and Momos",
+            synopsis : "Includes variety of Noodles, Sea Food & Momos",
             topPackage : true
         });
 
@@ -88,7 +88,7 @@ class topMealDB
             price : 151,
             category : "American",
             noOfMeals : 20,
-            synopsis : "Includes variety of Burgers, Poutines and Hotdogs",
+            synopsis : "Includes variety of Burgers, Poutines & Hotdogs",
             topPackage : true
         });
 

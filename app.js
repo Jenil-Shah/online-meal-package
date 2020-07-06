@@ -3,6 +3,7 @@ const exphbs = require("express-handlebars");
 const meal = require("./models/homeTop");
 const topMealDB = require("./models/homeTop");
 const bodyParser = require('body-parser');
+require('dotenv').config({path:"./config/keys.env"});
 
 const app = express();
 
@@ -84,6 +85,12 @@ app.post("/registration",(req,res) => {
         errors.push({email:"*You must enter email"});
     }
 
+    const emailregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if(!values.email.match(emailregex))
+    {
+        errors.push({email:"*Enter valid format of email"});
+    }
+
     if(values.password=="")
     {
         errors.push({password:"*You must enter password"});
@@ -116,7 +123,7 @@ app.post("/registration",(req,res) => {
     else
     {
         const sgMail = require('@sendgrid/mail');
-        sgMail.setApiKey("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");
+        sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
         const msg = {
         to: `jenilshah757@gmail.com`,
         from: `${values.email}`,
@@ -179,7 +186,7 @@ app.post("/login",(req,res) => {
 
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT;
 app.listen(PORT,() =>{
     console.log(`Web page is Up and Running`);
 });
