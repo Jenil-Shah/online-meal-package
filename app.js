@@ -125,8 +125,8 @@ app.post("/registration",(req,res) => {
         const sgMail = require('@sendgrid/mail');
         sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
         const msg = {
-        to: `jenilshah757@gmail.com`,
-        from: `${values.email}`,
+        to: `${values.email}`,
+        from: `jenilshah757@gmail.com`,
         subject: 'Welcome to Masterchef J.',
         html: 
         `<strong>Hi! <i>${values.firstName} ${values.lastName}</i>,</strong><br>
