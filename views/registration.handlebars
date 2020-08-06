@@ -3,7 +3,7 @@
         <div class="col-lg-4 col-md-3"></div>
 
         <div class="col-lg-4 col-md-6">
-            <form action="/registration" method="POST" id="form-ui">
+            <form action="/user/registration" method="POST" id="form-ui">
                 <fieldset>
                     <legend><b>Create Account</b></legend>
 
@@ -20,25 +20,31 @@
                     <div class="col-12 label-name">
                         <label for="fname">First Name</label>
                         {{#each errorMessages}}<div class="error-style">{{this.first}}</div>{{/each}}
-                        <div><input class="field-input" type="text" placeholder="Enter First Name" name="Fname" value={{field.firstName}}></div>
+                        <div><input class="field-input" type="text" placeholder="Enter First Name" name="fname" value={{field.firstName}}></div>
                     </div>
 
                     <div class="col-12 label-name">
                         <label for="lname">Last Name</label>
                         {{#each errorMessages}}<div class="error-style">{{this.last}}</div>{{/each}}
-                        <div><input class="field-input" type="text" placeholder="Enter Last Name" name="Lname" value={{field.lastName}}></div>
+                        <div><input class="field-input" type="text" placeholder="Enter Last Name" name="lname" value={{field.lastName}}></div>
                     </div>
 
                     <div class="col-12 label-name">
                         <label for="email">Email</label>
                         {{#each errorMessages}}<div class="error-style">{{this.email}}</div>{{/each}}
-                        <div><input class="field-input" type="email" placeholder="Enter Email..." name="Email" value={{field.email}}></div>
+                        <div class="error-style">{{duplicateError}}</div>
+                        <div><input class="field-input" type="email" placeholder="Enter Email..." name="email" value={{field.email}}></div>
                     </div>
 
                     <div class="col-12 label-name">
                         <label for="password">Password</label>
                         {{#each errorMessages}}<div class="error-style">{{this.password}}</div>{{/each}}
-                        <div><input class="field-input" type="password" placeholder="Enter Password" name="Password" value={{field.password}}></div>
+                        <div><input class="field-input" type="password" placeholder="Enter Password" name="password" value={{field.password}}></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="dataClerk">Registering as Data Clerk?</label>
+                        <div><input class="field-input" type="checkbox" name="dataClerk"></div>
                     </div>
 
                     <div class="col-12 label-name">
