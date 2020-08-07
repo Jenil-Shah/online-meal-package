@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcryptjs');
 
 let Schema = mongoose.Schema;
 
@@ -48,15 +49,69 @@ module.exports.addUsers = function(data){
         //add data
         let newUser = new Users(data);
 
-        newUser.save((err)=>{
-            if (err){
-                console.log("Woopsie there was an error: "+err);
+        //encrypt the password
+        bcrypt.genSalt(10)
+        .then(salt=>bcrypt.hash(newUser.password,salt))
+        .then(hash=>{
+            // Store the resulting "hash" value in the DB
+            newUser.password=hash;
+
+            //save the entry of the User
+            newUser.save((err)=>{
+                if (err){
+                    console.log("Woopsie there was an error: "+err);
+                    reject(err);
+                }
+                else{
+                    console.log("Saved that User: "+data.email);
+                    resolve();
+                }
+            });
+        })
+        .catch(err=>{
+            console.log(err);
+            reject("Hashing Error");
+        });
+
+    });
+}
+
+module.exports.getUserByEmail = function(inEmail){
+    return new Promise((resolve,reject)=>{
+        //gets an registerd email
+        Users.find({email: inEmail}) 
+        .exec()
+        .then((returnedUser)=>{
+            if(returnedUser.length != 0)
+                resolve(returnedUser.map(item=>item.toObject()));
+
+            else
+                reject("No User found");
+        }).catch((err)=>{
+                console.log("Error Retriving user:"+err);
                 reject(err);
-            }
-            else{
-                console.log("Saved that User: "+data.email);
-                resolve();
-            }
         });
     });
+}
+
+//check the authenticacy of the user 
+module.exports.validateUser = (data)=>{
+    return new Promise((resolve,reject)=>{
+    if (data){
+        this.getUserByEmail(data.email).then((retUser)=>{
+            //get the data and check if passwords match hash
+                bcrypt.compare(data.password, retUser[0].password).then((result) => {
+                    if (result){
+                        resolve(retUser);
+                    }
+                    else{
+                        reject("password don't match");
+                    }
+                });
+        }).catch((err)=>{
+            reject(err);
+        });
+    }
+    });
+    
 }

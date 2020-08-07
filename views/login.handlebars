@@ -17,10 +17,12 @@
                         <hr>or<hr>
                     </div>
 
+                    <div class="error-style" style="font-weight: bolder; text-align:center;">{{authenticationError}}</div>
+
                     <div class="col-12 label-name">
                         <label for="email">Email</label>
                         {{#each errorMessages}}<div class="error-style">{{this.email}}</div>{{/each}}
-                        <div><input class="field-input" type="email" placeholder="Enter Email..." name="EmailLog" value={{field.email}}></div>
+                        <div><input class="field-input" type="email" placeholder="Enter Email..." name="email" value={{field.email}}></div>
                     </div>
 
                     <div class="col-12">
@@ -29,7 +31,7 @@
                             <div class="col-8" style="text-align: center;"><a><i>&emsp;&emsp;Forgot Password?</i></a> </div>
                         </div>
                         {{#each errorMessages}}<div class="error-style">{{this.password}}</div>{{/each}}
-                        <div class="label-name"><input class="field-input" placeholder="Enter Password" type="password" name="PasswordLog" value={{field.password}}></div>
+                        <div class="label-name"><input class="field-input" placeholder="Enter Password" type="password" name="password" value={{field.password}}></div>
                     </div>
 
                     <div class="col-12 label-name">

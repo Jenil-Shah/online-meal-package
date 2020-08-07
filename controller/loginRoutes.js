@@ -1,7 +1,24 @@
 const express = require('express');
 const router = express.Router();
+const clientSessions = require("client-sessions");
 
 const db = require("../models/userDB");
+
+//setup client Session
+router.use(clientSessions({
+    cookieName: "session", // this is the object name that will be added to 'req'
+    secret: "masterchefj_userSession", //Secret String
+    duration: 2 * 60 * 1000, //duration of the session in milliseconds (2 minutes)
+    activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
+  }));
+
+  function ensureLogin(req, res, next) {
+    if (!req.session.user) {
+      res.redirect("/user/login");
+    } else {
+      next();
+    }
+  }
 
 let values;
 
@@ -15,7 +32,7 @@ router.get("/registration",(req,res) => {
 });
 
 router.post("/registration",(req,res) => {
-
+    
     const errors = [];
     values =
         {
@@ -23,7 +40,7 @@ router.post("/registration",(req,res) => {
             lastName : req.body.lname,
             email : req.body.email,
             password : req.body.password,
-            isDataClerk: req.body.dataClerk
+            isDataClerk : req.body.dataClerk
         }
 
 
@@ -99,7 +116,19 @@ router.post("/registration",(req,res) => {
             };
             sgMail.send(msg)
             .then(()=>{
-                res.redirect("/user/dashBoard");
+
+                req.session.user = {
+                    firstName : values.firstName,
+                    lastName : values.lastName,
+                    email : values.email
+                }
+
+                if(values.isDataClerk)
+                {
+                    res.redirect("/user/clerkDashBoard");
+                }
+                else
+                    res.redirect("/user/dashBoard");
             })
             .catch(err=>{
                 console.log(`Error: ${err}`);
@@ -133,18 +162,18 @@ router.get("/login",(req,res) => {
 router.post("/login",(req,res) => {
 
     const errors = [];
-    const values =
+    const tempValues =
     {
-        email : req.body.EmailLog,
-        password : req.body.PasswordLog
+        email : req.body.email,
+        password : req.body.password
     }
 
-    if(values.email=="")
+    if(tempValues.email=="")
     {
         errors.push({email:"*you must enter email"});
     }
 
-    if(values.password=="")
+    if(tempValues.password=="")
     {
         errors.push({password:"*you must enter password"});
     }
@@ -156,23 +185,59 @@ router.post("/login",(req,res) => {
             h1_quote:"Visit our Meal Packages",
             h3_quote:"Enjoy the Variety!!!",
             errorMessages:errors,
-            field:values
+            field:tempValues
         });
     }
 
     else
     {
-        res.redirect("/");
+        db.validateUser(req.body)
+        .then((inData) =>{
+            console.log(inData[0]);
+
+            req.session.user =
+                {
+                    firstName : inData[0].fname,
+                    lastName : inData[0].lname,
+                    email : inData[0].email
+                }
+
+            if(inData[0].dataClerk)
+                res.redirect("/user/clerkDashBoard");
+            else
+                res.redirect("/user/dashBoard");
+        })
+        .catch((message)=>{
+            console.log(message);
+            res.render("login",{
+                title:"Log In",
+                h1_quote:"Visit our Meal Packages",
+                h3_quote:"Enjoy the Variety!!!",
+                authenticationError:"*Your Email or Password is incorrect"
+            });
+          });
     }
 
 });
 
 /* Dash Board */
-router.get("/dashBoard",(req,res) => {
+router.get("/dashBoard", ensureLogin, (req,res) => {
     res.render("dashBoard",{
         title:"Dash Board",
-        field:values
+        field:req.session.user
     });
 });
+
+router.get("/clerkDashBoard", ensureLogin, (req,res) => {
+    res.render("clerkDashBoard",{
+        title:"Dash Board",
+        field:req.session.user
+    });
+});
+
+router.get("/logout", function(req, res) {
+    req.session.reset();
+    res.redirect("/user/login");
+  });
 
 module.exports = router;
