@@ -1,20 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const clientSessions = require("client-sessions");
+const path = require("path");
+const multer = require("multer");
 
 const db = require("../models/userDB");
 
-//setup client Session
-router.use(clientSessions({
-    cookieName: "session", // this is the object name that will be added to 'req'
-    secret: "masterchefj_userSession", //Secret String
-    duration: 2 * 60 * 1000, //duration of the session in milliseconds (2 minutes)
-    activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
-  }));
+const storage = multer.diskStorage({
+    destination: "./public/img/userImages/",
+    filename: function (req, file, cb) {
+      //change the name of the file according to current timings miliseconds
+      cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const imageFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('image')) {
+        return cb(null, true);
+    } else {
+        return cb(new Error('Not an image! Please upload an image.', 400), false);
+    }
+};
+
+// tell multer to use the diskStorage function for naming files instead of the default.
+const upload = multer({ storage: storage, fileFilter: imageFilter });
+
 
   function ensureLogin(req, res, next) {
     if (!req.session.user) {
-      res.redirect("/user/login");
+      res.redirect("/");
     } else {
       next();
     }
@@ -31,16 +44,17 @@ router.get("/registration",(req,res) => {
     });
 });
 
-router.post("/registration",(req,res) => {
+router.post("/registration", upload.single("photo"), (req,res) => {
     
     const errors = [];
+    const formFile = req.file;
     values =
         {
             firstName : req.body.fname,
             lastName : req.body.lname,
             email : req.body.email,
             password : req.body.password,
-            isDataClerk : req.body.dataClerk
+            photo : JSON.stringify(formFile)
         }
 
 
@@ -57,6 +71,11 @@ router.post("/registration",(req,res) => {
     if(values.email=="")
     {
         errors.push({email:"*You must enter email"});
+    }
+
+    if(!values.photo)
+    {
+        errors.push({photoError:"*You must upload your image"});
     }
 
     const emailregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -96,6 +115,7 @@ router.post("/registration",(req,res) => {
 
     else
     {
+        req.body.img = req.file.filename;
         db.addUsers(req.body)
         .then(() =>{
             const sgMail = require('@sendgrid/mail');
@@ -120,15 +140,11 @@ router.post("/registration",(req,res) => {
                 req.session.user = {
                     firstName : values.firstName,
                     lastName : values.lastName,
-                    email : values.email
+                    email : values.email,
+                    photo : req.body.img
                 }
 
-                if(values.isDataClerk)
-                {
-                    res.redirect("/user/clerkDashBoard");
-                }
-                else
-                    res.redirect("/user/dashBoard");
+                res.redirect("/user/dashBoard");
             })
             .catch(err=>{
                 console.log(`Error: ${err}`);
@@ -141,7 +157,7 @@ router.post("/registration",(req,res) => {
                 title:"Sign up",
                 h1_quote:"Create Your Account",
                 h3_quote:"Get chance to win our Gift Card",
-                duplicateError:"this email already exists",
+                duplicateError:"*this email already exists",
                 field:values
             });
         });
@@ -199,7 +215,8 @@ router.post("/login",(req,res) => {
                 {
                     firstName : inData[0].fname,
                     lastName : inData[0].lname,
-                    email : inData[0].email
+                    email : inData[0].email,
+                    photo : inData[0].img
                 }
 
             if(inData[0].dataClerk)
@@ -213,6 +230,7 @@ router.post("/login",(req,res) => {
                 title:"Log In",
                 h1_quote:"Visit our Meal Packages",
                 h3_quote:"Enjoy the Variety!!!",
+                field:tempValues,
                 authenticationError:"*Your Email or Password is incorrect"
             });
           });
@@ -228,6 +246,7 @@ router.get("/dashBoard", ensureLogin, (req,res) => {
     });
 });
 
+/* Clerk Dashboard */
 router.get("/clerkDashBoard", ensureLogin, (req,res) => {
     res.render("clerkDashBoard",{
         title:"Dash Board",
@@ -235,9 +254,16 @@ router.get("/clerkDashBoard", ensureLogin, (req,res) => {
     });
 });
 
+/* Logout */
 router.get("/logout", function(req, res) {
     req.session.reset();
     res.redirect("/user/login");
-  });
+});
+
+/* Error Handling for image upload */
+router.use((err, req, res, next) =>{
+    console.log(err.message);
+    res.status(500).render("registration", {message:'Cannot upload non-images files!'});
+});
 
 module.exports = router;

@@ -1,7 +1,15 @@
 <div class="dashboard-greeting">
     <div class="container-fluid">
         <div class="row jumbotron">
-            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10"></div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <a href="/addPackage"><button type="button" class="btn btn-outline-secondary btn-lg"><b>Create Mealpackage</b></button></a>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <a href="/viewPackages"><button type="button" class="btn btn-outline-secondary btn-lg"><b>View/Edit MealPackage</b></button></a>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-1"></div>
 
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
                 <a href="/user/logout"><button type="button" class="btn btn-outline-secondary btn-lg"><b>logout</b></button></a>
@@ -10,7 +18,9 @@
     </div>
 
 
-    <p>Hi&ensp;!! {{field.firstName}}</p>
+    <p>Hi&ensp;!! {{field.firstName}} {{field.lastName}}</p>
+
+    <div class="col-md-2"><img style="width: 100%;" src="/img/userImages/{{field.photo}}" alt="Image for {{field.firstName}}"></div>
 
     <p>Data Clerk!!!!!!!!!!!!</p>
     <p>Welcome To Masterchef J. Community</p>

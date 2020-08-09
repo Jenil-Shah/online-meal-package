@@ -11,7 +11,7 @@ let userSchema = new Schema({
     fname: String,
     lname: String,
     password: String,
-    dataClerk: Boolean
+    img: String
 });
 
 //local user template schema
@@ -41,10 +41,6 @@ module.exports.initialize = function(){
 
 module.exports.addUsers = function(data){
     return new Promise((resolve,reject)=>{
-        //prep the incoming data
-
-        //see if it has been "checked"
-        data.dataClerk = (data.dataClerk)? true: false;
 
         //add data
         let newUser = new Users(data);

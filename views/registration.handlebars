@@ -1,9 +1,10 @@
 <div class="container-fluid padding blank-design">
     <div class="row padding">
+
         <div class="col-lg-4 col-md-3"></div>
 
         <div class="col-lg-4 col-md-6">
-            <form action="/user/registration" method="POST" id="form-ui">
+            <form action="/user/registration" method="POST" id="form-ui" enctype="multipart/form-data">
                 <fieldset>
                     <legend><b>Create Account</b></legend>
 
@@ -43,8 +44,12 @@
                     </div>
 
                     <div class="col-12 label-name">
-                        <label for="dataClerk">Registering as Data Clerk?</label>
-                        <div><input class="field-input" type="checkbox" name="dataClerk"></div>
+                        <label for="photo">Upload yor Photo</label>
+                        {{#if message}}
+                            <div class="error-style"><strong>Error:</strong> {{message}}.</div>
+                        {{/if}}
+                        {{#each errorMessages}}<div class="error-style">{{this.photoError}}</div>{{/each}}
+                        <div><input class="field-input" type="file" name="photo"></div>
                     </div>
 
                     <div class="col-12 label-name">

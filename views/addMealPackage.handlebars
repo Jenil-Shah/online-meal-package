@@ -1,0 +1,64 @@
+<div class="container-fluid padding blank-design">
+    <div class="row padding">
+
+        <div class="col-lg-4 col-md-3"></div>
+
+        <div class="col-lg-4 col-md-6">
+            <form action="/addPackage" method="POST" id="form-ui">
+                <fieldset>
+                    <legend><b>Create Meal Package</b></legend>
+
+                    <div class="col-12 label-name">
+                        <label for="title">Title</label>
+                        {{#each errorMessages}}<div class="error-style">{{this.titleErr}}</div>{{/each}}
+                        <div class="error-style">{{duplicateError}}</div>
+                        <div><input class="field-input" type="text" placeholder="Enter Package Title" name="title" value={{field.title}}></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="price">Price</label>
+                        {{#each errorMessages}}<div class="error-style">{{this.priceErr}}</div>{{/each}}
+                        <div><input class="field-input" type="number" placeholder="Enter Price" name="price" value={{field.price}}></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="synopsis">Description</label>
+                        {{#each errorMessages}}<div class="error-style">{{this.synopsisErr}}</div>{{/each}}
+                        <div><textarea class="field-input" placeholder="Enter Description or Details.." name="synopsis">{{field.synopsis}}</textarea></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="category">Food Category</label>
+                        {{#each errorMessages}}<div class="error-style">{{this.categoryErr}}</div>{{/each}}
+                        <div><input class="field-input" type="text" placeholder="Enter Food Category" name="category" value={{field.category}}></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="noOfMeals">Number of Meals</label>
+                        {{#each errorMessages}}<div class="error-style">{{this.noOfMealsErr}}</div>{{/each}}
+                        <div><input class="field-input" type="number" placeholder="Enter Number of meals" name="noOfMeals" value={{field.noOfMeals}}></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="img">Image URL for Package</label>
+                        {{#each errorMessages}}<div class="error-style">{{this.imgErr}}</div>{{/each}}
+                        <div><input class="field-input" type="text" placeholder="Ex. : package.jpg" name="img" value={{field.img}}></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="topPackage">Is it a Top Package?</label>
+                        <div><input class="field-input" type="checkbox" name="topPackage"></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <b><input class="field-input btn btn-primary btn-lg" type="submit" value="Add" id="signUp"></b>
+                    </div>
+                    <br>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="col-lg-4 col-md-3"></div>
+    </div>
+
+</div>

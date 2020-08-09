@@ -96,3 +96,37 @@
         {{/each}}   
     </div>
 </div>
+
+<hr class="my-4">
+
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="display-4">Top 2 Meal Packages of the Week</h1>
+        </div>
+
+        <hr>
+
+        <div class="col-12">
+            <p class="lead order-quote"><i>These are the top 2 meal packages of the week (changes every week)
+            <br>
+            Enjoy our top meal packages and be delighted and happy</i></p>
+        </div>
+    </div>
+</div>
+
+<!--Top Meal Packages of the Month-->
+<div class="container-fluid padding">
+    <div class="row text-center padding">
+        {{#each dataPackage}}
+            {{#if this.topPackage}}
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 cuisine-display-information">
+                    <img class="topmeal-display" src="/img/{{this.img}}" alt="">
+                    <br><br>
+                    <p><b>{{this.title}}</b></p>
+                    <span class="money"><p><b><i>$ {{this.price}}</i></b></p></span>
+                </div>
+            {{/if}}
+        {{/each}}   
+    </div>
+</div>

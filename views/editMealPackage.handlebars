@@ -1,0 +1,70 @@
+<div class="container-fluid padding blank-design">
+    <div class="row padding">
+
+        <div class="col-lg-4 col-md-3"></div>
+
+        <div class="col-lg-4 col-md-6">
+            <form action="/editPackage" method="POST" id="form-ui">
+                <fieldset>
+                    <legend><b>Edit Meal Package</b></legend>
+
+                    <div class="col-12 label-name">
+                        <label for="title">Title</label>
+                        <div>{{field.title}}</div>
+                        <div><input class="field-input" type="text" placeholder="Enter Title" hidden name="title" value="{{field.title}}""></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="price">Price</label>
+                        {{#each errorMessages}}<div class="error-style">{{this.priceErr}}</div>{{/each}}
+                        <div><input class="field-input" type="number" placeholder="Enter Price" name="price" value={{field.price}}></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="synopsis">Description</label>
+                        {{#each errorMessages}}<div class="error-style">{{this.synopsisErr}}</div>{{/each}}
+                        <div><textarea class="field-input" placeholder="Enter Description or Details.." name="synopsis">{{field.synopsis}}</textarea></div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="category">Food Category</label>
+                        
+                        <div>{{field.category}}</div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="noOfMeals">Number of Meals</label>
+                        
+                        <div>{{field.noOfMeals}}</div>
+                    </div>
+
+                    <div class="col-12 label-name">
+                        <label for="img">Image URL for Package</label>
+                        
+                        <div>{{field.img}}</div>
+                    </div>
+
+                    {{#if field.topPackage}}
+                    <div class="col-12 label-name">
+                        <label for="topPackage">Is it a Top Package?</label>
+                        <div><input class="field-input" type="checkbox" name="topPackage" checked></div>
+                    </div>
+                    {{else}}
+                    <div class="col-12 label-name">
+                        <label for="topPackage">Is it a Top Package?</label>
+                        <div><input class="field-input" type="checkbox" name="topPackage" value={{field.topPackage}}></div>
+                    </div>
+                    {{/if}}
+
+                    <div class="col-12 label-name">
+                        <b><input class="field-input btn btn-primary btn-lg" type="submit" value="Edit" id="signUp"></b>
+                    </div>
+                    <br>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="col-lg-4 col-md-3"></div>
+    </div>
+
+</div>
