@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
+        <!-- it is common to place the .js files at the end of the <body> tag as well -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script>
+            function makeAJAXRequest(method, url, data){
+                if(data){ // Make an AJAX call using the provided data & method
+                    console.log("Adding: "+data.name);
+                    fetch(url, { 
+                        method: method,
+                        body: JSON.stringify(data),
+                        headers: { 'Content-Type': 'application/json'} 
+                    })
+                    .then(response => response.json())
+                    .then(json => {//responds with number of items in cart 
+                        //changes the number beside the cart
+                        $("span.glyphicon").text(`${json.data}`);
+                    }).catch((err)=>{
+                        console.log("Error Fetching");
+                        alert(err.message);
+                    }); 
+
+                }else{  // Make an AJAX call without providing data using the method
+                    fetch(url, { method: method })
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log(json);   
+                    }).catch((message)=>{
+                        alert(message);
+                    });
+                }
+            }
+            //makes ajax call to add a certain item by name to cart
+            function addToCart(data){
+                console.log("Calling add with: "+data);
+                 makeAJAXRequest("POST", "/addProduct", {name: data});
+            }
+
+        </script>    
+
+
+
+
+       <style >
+           img {
+                border-radius: 25px;
+                width: 100%;
+            }
+            .glyphicon {
+                padding-top: 5%;
+                font-size: 35px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="row">
+            <div class="col-md-3">
+                <h2>Meal Package</h2>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
+                <br>
+                <a href="/mealsPackage"><button type="button" class="btn btn-outline-light btn-lg">Meals Packages</button></a>  
+            </div>
+            <div class="col-md-3">
+                <!-- Add the shopping cart glyphicon -->
+               <a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+               <br>View cart to checkout
+            </div>
+        </div>
+        <hr>
+
+            <div class="container-fluid padding">
+                <div class="row text-center padding topmeal-display-information">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                            <img class="topmeal-display" src="/img/{{field.img}}" alt="">
+                        </div>
+                        <br><br>
+                            <h4>
+                                <p>Package Name : <b>{{field.title}}</b></p>
+                                <span class="money"><p>Price : <b><i>$ {{field.price}}</i></b></p></span>
+                                <p>Category : <i>{{field.category}}</i></p>
+                                <p>Number Of Meals : {{field.noOfMeals}} types of Meals</p>
+                            </h4>
+                            <hr>
+                            <h3>Description : <i>{{field.synopsis}}</i></h3>
+                </div>
+            </div>
+            <br><br>
+                <!-- Creates add to cart button -->
+                <button class="btn btn-primary btn-lg"  type="button" onclick='addToCart("{{field.title}}")'>Add to Cart</button>
+            </div>
+        
+        <hr>
+        </div>
+    </body>
+</html>

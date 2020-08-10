@@ -1,10 +1,11 @@
 <br><br>
+<div style="text-align: center;"><p class="lead"><i><b>Click on Packages to Add to Cart</b></i></p></div>
 <!--Meal Packages-->
 <div class="container-fluid padding">
     <div class="row text-center padding topmeal-display-information">
         {{#each data}}
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <img class="topmeal-display" src="/img/{{this.img}}" alt="">
+                <a href="/listingProduct?item={{this.title}}"><img class="topmeal-display" src="/img/{{this.img}}" alt=""></a>
                 <br><br>
                 <p><b>{{this.title}}</b></p>
                 <span class="money"><p><b><i>$ {{this.price}}</i></b></p></span>

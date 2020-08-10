@@ -21,7 +21,6 @@ router.get("/",(req,res) => {
     const fakeDB = new topMealDB();
     mealDB.getPackages()
     .then((inData) =>{
-        console.log(inData);
         res.render("home",{
             title:"Home",
             h1_quote:"Your Cuisine, Your Home.",
